@@ -1,62 +1,84 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+.page-body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-    margin-top: 30px;
-    color: #222;
+.page-title {
+  margin-top: 30px;
+  color: #333;
 }
 
-form {
-    background-color: #ffffff;
-    width: 420px;
-    margin: 25px auto;
-    padding: 25px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+.form-data {
+  background: #ffffff;
+  width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
-input[type="file"] {
-    width: 100%;
-    margin-bottom: 12px;
+.form-input {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    resize: none;
-    border: 1px solid #bbb;
-    border-radius: 4px;
+.textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  resize: none;
 }
 
-button {
-    padding: 8px 16px;
-    margin: 5px;
-    border: 1px solid #777;
-    background-color: #eaeaea;
-    cursor: pointer;
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
 }
 
-button:hover {
-    background-color: #dcdcdc;
+.button-group button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-h3 {
-    margin-top: 20px;
-    color: #333;
+.button-group button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-input[readonly] {
-    width: 120px;
-    padding: 6px;
-    text-align: center;
-    margin-top: 8px;
-    border: 1px solid #666;
-    background-color: #f9f9f9;
-    font-weight: bold;
+.button-group button[type="reset"] {
+  background-color: #6c757d;
+}
+
+.button-group button[type="reset"]:hover {
+  background-color: #545b62;
+}
+
+.file-name {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.score-area {
+  margin-top: 15px;
+}
+
+.score-title {
+  margin-bottom: 8px;
+}
+
+.score-input {
+  width: 100%;
+  padding: 6px;
+  text-align: center;
+  font-weight: bold;
 }
