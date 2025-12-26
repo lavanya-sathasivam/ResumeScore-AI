@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Score Matcher</title>
+    <title>Resume Score AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="page-body">
 
-    <h1>Resume Score AI</h1>
+    <h1 class="page-title">Resume Score AI</h1>
 
-    <form action="/" method="POST" enctype="multipart/form-data">
-    <input type="file" name="resume" accept="application/pdf" required>
+    <form action="/" method="POST" enctype="multipart/form-data" class="form-data">
+    <input type="file" class="form-input" name="resume" accept="application/pdf" required>
 
     {% if filename %}
-        <p>Uploaded file: <b>{{ filename }}</b></p>
+        <p class="file-name">Uploaded file: <b>{{ filename }}</b></p>
     {% endif %}
 
-    <textarea name="job_description" rows="10"
-              placeholder="Enter job description.." required>{{ job_description }}</textarea>
-
+    <textarea name="job_description" rows="10" placeholder="Enter job description.." required class="textarea">{{ job_description }}</textarea>
+    <div class="button-group">
     <button type="submit">Check Score</button>
-    <button type="submit" formaction="/" formmethod="GET">Reset</button>
+    <button type="submit" formaction="/" formmethod="get">Reset</button>
+    </div>   
 
     {% if score is not none %}
-        <h3>Your Resume Match Score:</h3>
-        <input type="text" value="{{ score }}%" readonly>
+    <div class="score-area">
+        <h3 class="score-title">Your Resume Match Score:</h3>
+        <input type="text" value="{{ score }}%" readonly class="score-input">
+    </div>
     {% endif %}
     </form>
 </body>
