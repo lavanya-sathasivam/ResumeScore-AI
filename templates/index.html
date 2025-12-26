@@ -7,16 +7,26 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Resume Score Matcher</h1>
-    <form action="\" method="POST" enctype="multipart/form-data">
-        <input type="file" name="resume" accept="application/pdf" required>
-        <textarea name="job_description" rows="10"  placeholder="Enter job description.." required></textarea>
-        <button type="submit">Check Score</button>
-        <button type ="reset">Reset</button>
-    </form>
-    
-    {% if score is not none %}
-        <h3 id="scoretext">Your Resume Match Score: {{ score }}%</h3>
+
+    <h1>Resume Score AI</h1>
+
+    <form action="/" method="POST" enctype="multipart/form-data">
+    <input type="file" name="resume" accept="application/pdf" required>
+
+    {% if filename %}
+        <p>Uploaded file: <b>{{ filename }}</b></p>
     {% endif %}
+
+    <textarea name="job_description" rows="10"
+              placeholder="Enter job description.." required>{{ job_description }}</textarea>
+
+    <button type="submit">Check Score</button>
+    <button type="submit" formaction="/" formmethod="GET">Reset</button>
+
+    {% if score is not none %}
+        <h3>Your Resume Match Score:</h3>
+        <input type="text" value="{{ score }}%" readonly>
+    {% endif %}
+    </form>
 </body>
 </html>
