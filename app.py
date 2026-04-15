@@ -11,7 +11,13 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-model = SentenceTransformer('all-MiniLM-L6-v2')
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        model = SentenceTransformer('all-MiniLM-L6-v2')
+    return model
 
 def extract_text_from_pdf(file_path):
     doc = fitz.open(file_path)
@@ -20,11 +26,12 @@ def extract_text_from_pdf(file_path):
         text += page.get_text()
     return text.strip()
 
-def cosines_similarity(resume_text,job_description):
-    embeddings = model.encode([resume_text,job_description])
+def cosines_similarity(resume_text, job_description):
+    model = get_model()
+    embeddings = model.encode([resume_text, job_description])
     similarity = cosine_similarity(
         [embeddings[0]], [embeddings[1]])
-    return round(similarity[0][0]*100,2)
+    return round(similarity[0][0] * 100, 2)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
