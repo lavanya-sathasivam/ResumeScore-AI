@@ -1,37 +1,44 @@
 # ResumeScore-AI
 
-Simple Flask app that computes an ATS-style similarity score between a resume PDF and a job description using `sentence-transformers`.
+ResumeScore-AI is a Flask-based resume analysis tool that evaluates how well a resume matches a given job description.
 
-## Requirements
-- Python 3.11 or newer
-- See `requirements.txt` for Python package dependencies
+It generates an ATS-style similarity score using **TF-IDF and cosine similarity** and also performs **skill-gap analysis** to identify matched and missing skills.
 
-## Setup
-1. Create and activate a virtual environment:
+## Features
 
-```bash
-python -m venv .venv
-# Windows PowerShell
-.\.venv\Scripts\Activate.ps1
-# or cmd
-.\.venv\Scripts\activate
-```
+- Upload a resume in PDF format
+- Enter a target job description
+- Calculate resume-job similarity score
+- Extract skills from the resume and job description
+- Identify matched skills
+- Identify missing skills
+- Calculate skill coverage percentage
+- Simple web-based Flask interface
 
-2. Install dependencies:
+## Tech Stack
 
-```bash
-pip install -r requirements.txt
-```
+- Python 3.11+
+- Flask
+- PyMuPDF
+- Scikit-learn
+- TF-IDF Vectorization
+- Cosine Similarity
+- HTML/CSS
 
-## Run
+## Project Structure
 
-```bash
-python app.py
-```
-
-Open http://127.0.0.1:5000 in your browser, upload a resume PDF and paste a job description to get a similarity score.
-
-## Notes
-- Uploaded files are saved to the `uploads` folder created by the app.
-- The first run may download model weights (internet required) and could take some time.
-- If you run into GPU/CPU compatibility issues with `sentence-transformers`, ensure appropriate `torch` binaries are installed for your platform.
+```text
+ResumeScore-AI/
+│
+├── app.py
+├── requirements.txt
+├── Procfile
+├── README.md
+│
+├── static/
+│   └── style.css
+│
+├── templates/
+│   └── index.html
+│
+└── uploads/
