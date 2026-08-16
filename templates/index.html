@@ -29,6 +29,41 @@
         <input type="text" value="{{ score }}%" readonly class="score-input">
     </div>
     {% endif %}
+        {% if skill_analysis %}
+    <div class="skill-analysis">
+        <h3>Skill Match Analysis</h3>
+
+        <p class="coverage">
+            Job-skill coverage: <strong>{{ skill_analysis.skill_coverage }}%</strong>
+        </p>
+
+        <div class="skill-section">
+            <h4>Matched skills</h4>
+            {% if skill_analysis.matched_skills %}
+                <div class="skill-list">
+                    {% for skill in skill_analysis.matched_skills %}
+                        <span class="skill-tag matched">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No direct skill matches were detected.</p>
+            {% endif %}
+        </div>
+
+        <div class="skill-section">
+            <h4>Skills to strengthen</h4>
+            {% if skill_analysis.missing_skills %}
+                <div class="skill-list">
+                    {% for skill in skill_analysis.missing_skills %}
+                        <span class="skill-tag missing">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No missing catalogue skills were detected.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
     </form>
 </body>
 </html>
